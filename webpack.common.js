@@ -16,12 +16,21 @@ module.exports = {
         rules: [
             {
               test: /\.m?js$/,
-              exclude: /(node_modules|bower_components)/,
+              exclude: /(moment)/,
               use: {
                 loader: 'babel-loader',
                 options: {
                   presets: [
-                      ['@babel/preset-env', { "modules": "umd" }]
+                      [
+                        '@babel/preset-env', 
+                        {
+                          "targets": {
+                            "esmodules": true,
+                            "chrome": "58",
+                            "ie": "11"
+                          }
+                        }
+                      ]
                   ],
                   plugins: [
                       '@babel/plugin-transform-runtime',
